@@ -1,0 +1,39 @@
+<h1>Students</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Full name</th>
+      <th>Age</th>
+      <th>Bio</th>
+      <th>Title</th>
+      <th>Company</th>
+      <th>Favorite Ice Cream</th>
+      <th>Gender</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.full_name %></td>
+        <td><%= student.age %></td>
+        <td><%= student.bio %></td>
+        <td><%= student.title %></td>
+        <td><%= student.company %></td>
+        <td><%= student.favorite_ice_cream %></td>
+        <td><%= student.gender %></td>
+        <td><%= link_to 'Show', student %></td>
+        <td><%= link_to 'Edit', edit_student_path(student) %></td>
+        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Student', new_student_path %>
