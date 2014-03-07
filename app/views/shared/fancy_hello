@@ -1,0 +1,2 @@
+<h1> <font color='red'>Hello</font></h1>
+<h2> <%= flash[:alert] %> </h2>

@@ -10,11 +10,18 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
+
+    respond_to do |format|
+      format.html
+      format.xml {render xml: @student.to_xml}
+      format.json
+    end
   end
 
   # GET /students/new
   def new
     @student = Student.new
+
   end
 
   # GET /students/1/edit
@@ -69,6 +76,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:full_name, :age, :bio, :title, :company, :favorite_ice_cream, :gender)
+      params.require(:student).permit(:full_name, :age, :bio, :title, :company, :favorite_ice_cream, :gender, :courses)
     end
 end

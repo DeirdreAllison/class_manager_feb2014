@@ -1,4 +1,4 @@
-<h1>Students</h1>
+<h1>All Students</h1>
 
 <table>
   <thead>
@@ -19,14 +19,14 @@
   <tbody>
     <% @students.each do |student| %>
       <tr>
-        <td><%= student.full_name %></td>
+        <td><%= link_to student.full_name, student %></td>
         <td><%= student.age %></td>
-        <td><%= student.bio %></td>
+        <td><%= truncate(student.bio, :length => 55) %></td>
+        <!--could also use student.bio.to_s[0,55] but that would need to be duplicated throughout-->
         <td><%= student.title %></td>
         <td><%= student.company %></td>
         <td><%= student.favorite_ice_cream %></td>
         <td><%= student.gender %></td>
-        <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

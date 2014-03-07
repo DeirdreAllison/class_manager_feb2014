@@ -4,9 +4,9 @@
       <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
 
       <ul>
-      <% @student.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+      <%# @student.errors.full_messages.each do |msg| %>
+        <li><%= #msg %></li>
+      <% #end %>
       </ul>
     </div>
   <% end %>
@@ -14,6 +14,20 @@
   <div class="field">
     <%= f.label :full_name %><br>
     <%= f.text_field :full_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :courses %><br>
+    <%= f.collection_select( :course_ids,
+              Course.all,
+              :id, :title, {selected: @student.course_ids, include_blank: false}, {multiple: true}) %>
+  </div>
+
+
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
   </div>
   <div class="field">
     <%= f.label :age %><br>
