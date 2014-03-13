@@ -3,14 +3,18 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+group :production do
+	gem 'pg'
+end
+
 
 gem 'devise'
 
 group :test, :development do
 	gem 'rspec-rails'
 	gem 'capybara-rails'
+	# Use sqlite3 as the database for Active Record
+	gem 'sqlite3'
 end
 
 gem 'twitter-bootstrap-rails', '~> 2.2.8'
