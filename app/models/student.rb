@@ -10,6 +10,8 @@ class Student < ActiveRecord::Base
 
 	#validates_presence_of :full_name, :email
 
+	after_create :notify_admin
+
 	def self.teachers
 		where(title: 'Teacher')
 	end
@@ -23,5 +25,12 @@ class Student < ActiveRecord::Base
 		"age: #{age}\n"+
 		"bio: #{bio}"
 
+	end
+
+	private
+
+	def notify_admin
+		AdminMailer.notify_admin_about_new(self).deliver
+		
 	end
 end
